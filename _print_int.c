@@ -8,20 +8,42 @@
  */
 int _print_int(va_list args)
 {
-	int num;
-	unsigned int s;
+	int num, len, pwr, digit, n, j, count;
 
-	num = va_arg(args, int);
-	s = num;
-	if (num < 0)
+	count = 0;
+	n = va_arg(args, int);
+	if (n != 0)
 	{
-		_putchar('-');
-		s = num * (-1);
-	}
-	else if (s / 10)
-	{
-		_printint((s / 10));
-	}
-	_putchar('0' + (s % 10));
-	return (0);
+		if (n < 0)
+		{
+			_putchar('-');
+			count++;
+		}
+		num = n;
+		len = 0;
+		while (num != 0)
+		{
+			n /= 10;
+			len++;
+		}
+		pwr = 1;
+		for (j = 1 ; j <= (len - 1); j++)
+			pwr *= 10;
+		for (j = 1; j <= len; j++)
+		{
+			digit = n / pwr;
+			if (n < 0)
+				_putchar((digit * (-1)) + 48);
+			else
+				_putchar(digit + '0');
+			count++;
+			n = (digit * pwr) - n;
+			pwr /= 10;
+		}
+		else
+		{
+			_putchar('0');
+			return (1);
+		}
+	return (count);
 }
