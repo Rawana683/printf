@@ -40,6 +40,7 @@ int _print_int(va_list args)
 			n = (digit * pwr) - n;
 			pwr /= 10;
 		}
+	}
 		else
 		{
 			_putchar('0');

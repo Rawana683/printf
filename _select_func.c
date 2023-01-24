@@ -7,7 +7,7 @@
  * description : "select the right func to use"
  * Return: the right func
  */
-int (*_select_func(char c))(va_list args)
+int (*_select_func(char c))(va_list)
 {
 	if (c == 'c')
 	{
