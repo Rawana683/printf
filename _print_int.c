@@ -23,7 +23,7 @@ int _print_int(va_list args)
 		len = 0;
 		while (num != 0)
 		{
-			n /= 10;
+			num /= 10;
 			len++;
 		}
 		pwr = 1;

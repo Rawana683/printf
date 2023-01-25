@@ -21,8 +21,5 @@ int (*_select_func(char c))(va_list)
 	{
 		return (_print_int);
 	}
-	else
-	{
 		return (NULL);
-	}
 }

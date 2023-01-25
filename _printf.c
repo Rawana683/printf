@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 /**
  * _printf - entry point
  * @format : char to recieve
@@ -15,6 +16,7 @@ int _printf(const char *format, ...)
 
 	num_dis = 0;
 	va_start(args, format);
+	i = 0;
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
@@ -24,9 +26,18 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+			if (format[i + 1] == '%')
+			{
+				_putchar('%');
+				num_dis++;
+				i++;
+			}
+			else
+			{
 			_select_func(format[i + 1])(args);
 			i++;
 			num_dis++;
+			}
 		}
 		i++;
 	}
