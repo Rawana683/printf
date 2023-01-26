@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stddef.h>
 #include <stdio.h>
 /**
  * _select_func - entry point
