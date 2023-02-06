@@ -22,5 +22,13 @@ int (*_select_func(char c))(va_list)
 	{
 		return (_print_int);
 	}
+	else if (c == '%')
+	{
+		return(_print_char);
+	}
+	else
+	{
+		return (_print_char);
+	}
 		return (NULL);
 }

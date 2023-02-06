@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "main.h"
 #include <stdarg.h>
 /**
@@ -9,15 +10,16 @@
  */
 int _print_string(va_list args)
 {
-int i;
+int i = 0;
 char *s;
+int count = 0;
 
-i = 0;
+
 s = va_arg(args, char *);
 while (s[i] != '\0')
 {
-_putchar(s[i]);
+count += _putchar(s[i]);
 i++;
 }
-return (0);
+return (count);
 }

@@ -8,15 +8,16 @@
  */
 int _print_char(va_list args)
 {
-	char c;
+	char c = va_arg(args, int);
+	int count = 0;
 
-	c = va_arg(args, int);
-	if (c != '%')
+	if (c == '%')
 	{
-		return (_putchar(c));
+		count += _putchar('%');
 	}
 	else
 	{
-		return (_putchar(c));
+		count += _putchar(c);
 	}
+	return (count);
 }

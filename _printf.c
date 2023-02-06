@@ -12,35 +12,42 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i;
-	int num_dis;
+	int count;
 
-	num_dis = 0;
+
 	va_start(args, format);
-	i = 0;
-	while (format[i] != '\0')
+	count = 0;
+	if (!format)
+	{
+		return (-1);
+	}
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
-			num_dis++;
+			count += _putchar(format[i]);
 		}
 		else
 		{
 			if (format[i + 1] == '%')
 			{
-				_putchar('%');
-				num_dis++;
-				i++;
+				count += _putchar('%');
 			}
 			else
 			{
-			_select_func(format[i + 1])(args);
-			i++;
-			num_dis++;
+				if (format[i] == '%' && (format[i + 1] == 'c' || format[i + 1] == 's'
+							|| format[i + 1] == 'i' || format[i + 1] == 'd'))
+				{
+				count += _select_func(format[i + 1])(args);
+				i++;
+				}
+				else
+				{
+					count += _putchar(format[i]);
+				}
 			}
 		}
-		i++;
 	}
 	va_end(args);
-	return (num_dis);
+	return (count);
 }
